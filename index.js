@@ -46,18 +46,22 @@ async function run(){
     app.put( '/service/:id' , async(req , res)=>{
         const id = req.params.id 
         const quantityIncrease = req.body
-        console.log(quantityIncrease)
+        // console.log(quantityIncrease)
+        // res.send(quantityIncrease.quantity)
         const filter = {_id: ObjectId(id)}
         const options = {upsert :true}
-
+        // res.send(filter)
         const updateDoc ={
             $set:{
-                // quantity:quantityIncrease.quantityUpdate
-                quantityIncrease
+                quantity:quantityIncrease.quantity
+                // quantityIncrease
             }
         }
-        const result = await servicesCollection.updateOne(filter, updateDoc, options)
+        
+        const result = await servicesCollection.updateOne(filter,updateDoc , options)
+        // console.dir(result)
         res.send(result)
+        
     })
 
     // auth
