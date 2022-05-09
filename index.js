@@ -158,6 +158,9 @@ async function run(){
 app.get('/' ,(req ,res)=>{
     res.send('hello car inventory')
 })
+app.get('/hero',(req , res)=>{
+    res.send('hero')
+})
 app.listen(port,()=>{
     console.log('car inventory curd operation')
 })
