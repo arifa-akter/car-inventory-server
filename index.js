@@ -6,8 +6,23 @@ const port = process.env.PORT||5000;
 require('dotenv').config()
 const app = express()
 // middleware
-app.use(cors())
+app.use(cors());
+const corsConfig = {
+    origin: true,
+    credentials: true,
+}
+app.use(cors(corsConfig))
+app.options('*', cors(corsConfig))
 app.use(express.json())
+// app.use(
+//     cors({
+//       origin: true,
+//       optionsSuccessStatus: 200,
+//       credentials: true,
+//     })
+//   );
+
+
 // function verifyJWT(req , res, next){
 //     const authHeader = req.headers.authorization
 //         console.log('inside verifyJWT',authHeader)
